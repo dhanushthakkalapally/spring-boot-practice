@@ -3,6 +3,7 @@ package com.dhanush.springbootpractice.controller;
 import com.dhanush.springbootpractice.model.Employee;
 import com.dhanush.springbootpractice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("/v1/employees")
 public class EmployeeController {
 
+    @Qualifier("employeeServiceImpl")
     @Autowired
     EmployeeService employeeService;
 

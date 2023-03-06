@@ -9,4 +9,6 @@ public interface EmployeeService {
     Employee getEmployee(int id);
 
     List<Employee> getEmployees();
+
+    Employee updateEmployee(int id, Employee employee);
 }

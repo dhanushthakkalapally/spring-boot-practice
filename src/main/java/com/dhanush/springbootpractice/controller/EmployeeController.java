@@ -31,4 +31,10 @@ public class EmployeeController {
         return employeeService.getEmployee(id);
     }
 
+    @PutMapping ("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Employee getEmployee(@PathVariable("id") int id, @RequestBody Employee employee) {
+        return employeeService.updateEmployee(id, employee);
+    }
+
 }

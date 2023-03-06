@@ -4,7 +4,6 @@ import com.dhanush.springbootpractice.model.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,6 +29,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getEmployees() {
-        return (List<Employee>) this.employeeHashMap.values();
+        return new ArrayList<>(this.employeeHashMap.values());
     }
+
+    @Override
+    public Employee updateEmployee(int id, Employee employee) {
+        Employee existingEmployee = employeeHashMap.get(id);
+        existingEmployee.setStatus(employee.getStatus());
+        existingEmployee.setAge(employee.getAge());
+        existingEmployee.setName(employee.getName());
+        return existingEmployee;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.dhanush.springbootpractice.service;
 
+import com.dhanush.springbootpractice.exception.EmployeeNotFoundException;
 import com.dhanush.springbootpractice.model.Employee;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
-    public Employee getEmployee(int id) {
-        return this.employeeHashMap.get(id);
+    public Employee getEmployee(int id) throws EmployeeNotFoundException {
+
+            if (this.employeeHashMap.get(id) == null) {
+                throw new EmployeeNotFoundException("Employee with id: "+ id + " Not Found!");
+            }
+            return employeeHashMap.get(id);
+
     }
 
     @Override

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImplV2 implements EmployeeService {
@@ -22,18 +23,29 @@ public class EmployeeServiceImplV2 implements EmployeeService {
 
         employeeRepo.save(entity);
 
-        employee.setId();
+        BeanUtils.copyProperties(entity, employee);
+
+        return employee;
 
     }
 
     @Override
     public Employee getEmployee(int id) {
-        return null;
+         Employee employee = new Employee();
+         EmployeeEntity employeeEntity = employeeRepo.findById(id);
+         BeanUtils.copyProperties(employeeEntity, employee);
+
+         return employee;
     }
 
     @Override
     public List<Employee> getEmployees() {
-        return null;
+        List<Employee> employees = employeeRepo.findAll().stream().map(employeeEntity -> {
+            Employee employee = new Employee();
+            BeanUtils.copyProperties(employeeEntity, employee);
+            return employee;
+        }).collect(Collectors.toList());
+        return employees;
     }
 
     @Override

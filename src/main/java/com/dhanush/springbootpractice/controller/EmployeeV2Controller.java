@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v2/employees")
 public class EmployeeV2Controller {
@@ -18,8 +20,20 @@ public class EmployeeV2Controller {
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee createEmployee(@RequestBody Employee employee) {
-        
+
         return employeeService.createEmployee(employee);
+    }
+
+    @GetMapping("/")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Employee> getEmployees() {
+        return employeeService.getEmployees();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Employee getEmployee(@PathVariable int id) {
+        return employeeService.getEmployee(id);
     }
 
 

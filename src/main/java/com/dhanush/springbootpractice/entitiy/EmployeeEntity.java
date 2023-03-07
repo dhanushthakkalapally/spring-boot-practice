@@ -2,9 +2,17 @@ package com.dhanush.springbootpractice.entitiy;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity()
 @Table(name="employee")
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
+@Builder
 public class EmployeeEntity {
 
     @Id

@@ -36,5 +36,17 @@ public class EmployeeV2Controller {
         return employeeService.getEmployee(id);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Employee updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
+        return employeeService.updateEmployee(id, employee);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateEmployee(@PathVariable int id) {
+        employeeService.deleteEmployee(id);
+    }
+
 
 }

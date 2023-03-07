@@ -11,4 +11,6 @@ public interface EmployeeService {
     List<Employee> getEmployees();
 
     Employee updateEmployee(int id, Employee employee);
+
+    void deleteEmployee(int id);
 }

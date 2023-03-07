@@ -50,6 +50,14 @@ public class EmployeeServiceImplV2 implements EmployeeService {
 
     @Override
     public Employee updateEmployee(int id, Employee employee) {
-        return null;
+        employeeRepo.updateEmployeeDetailsById(id, employee.getName(), employee.getStatus(), employee.getAge());
+        EmployeeEntity employeeEntity = employeeRepo.findById(id);
+        BeanUtils.copyProperties(employeeEntity, employee);
+
+        return employee;
+    }
+    @Override
+    public void deleteEmployee(int id) {
+        employeeRepo.deleteById(id);
     }
 }

@@ -47,4 +47,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return existingEmployee;
     }
 
+    @Override
+    public void deleteEmployee(int id) {
+    }
+
 }
